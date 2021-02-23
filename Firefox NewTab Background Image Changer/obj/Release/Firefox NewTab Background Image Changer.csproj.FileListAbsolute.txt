@@ -1,0 +1,9 @@
+C:\Users\fanta\Documents\App\FNTBIC\Firefox NewTab Background Image Changer\bin\Release\Firefox NewTab Background Image Changer.exe.config
+C:\Users\fanta\Documents\App\FNTBIC\Firefox NewTab Background Image Changer\bin\Release\Firefox NewTab Background Image Changer.exe
+C:\Users\fanta\Documents\App\FNTBIC\Firefox NewTab Background Image Changer\bin\Release\Firefox NewTab Background Image Changer.pdb
+C:\Users\fanta\Documents\App\FNTBIC\Firefox NewTab Background Image Changer\obj\Release\Firefox NewTab Background Image Changer.csprojAssemblyReference.cache
+C:\Users\fanta\Documents\App\FNTBIC\Firefox NewTab Background Image Changer\obj\Release\Firefox_NewTab_Background_Image_Changer.Form1.resources
+C:\Users\fanta\Documents\App\FNTBIC\Firefox NewTab Background Image Changer\obj\Release\Firefox_NewTab_Background_Image_Changer.Properties.Resources.resources
+C:\Users\fanta\Documents\App\FNTBIC\Firefox NewTab Background Image Changer\obj\Release\Firefox NewTab Background Image Changer.csproj.GenerateResource.cache
+C:\Users\fanta\Documents\App\FNTBIC\Firefox NewTab Background Image Changer\obj\Release\Firefox NewTab Background Image Changer.exe
+C:\Users\fanta\Documents\App\FNTBIC\Firefox NewTab Background Image Changer\obj\Release\Firefox NewTab Background Image Changer.pdb

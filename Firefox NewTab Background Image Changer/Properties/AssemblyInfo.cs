@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // 制御されます。アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更します。
 [assembly: AssemblyTitle("Firefox NewTab Background Image Changer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Customize the background image of a new tab in Firefox")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("https://github.com/dekotan24")]
 [assembly: AssemblyProduct("Firefox NewTab Background Image Changer")]
-[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyCopyright("Copyright © dekotan24")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
