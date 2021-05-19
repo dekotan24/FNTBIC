@@ -17,18 +17,19 @@ namespace Firefox_NewTab_Background_Image_Changer
         string appname = "Firefox NewTab Background Image Changer";
         string[] Dirct = new string[99];
 
-        string msg_about_profile = "Firefoxでは、履歴やアドオンなどといった情報はプロファイルに保存されています。\nここでは、背景画像を変更したいプロファイルを選択します。\n使用中のプロファイルについては、[about:profiles]で確認することができます。\n\n例えば、使用中のプロファイルの'ルートディレクトリー'欄の最後が[thisisexample.default-esr]で終わっている場合、それがプロファイル名になります。";
-        string msg_profile_notfound = "プロファイルが見つかりません。\n既に削除されたか、名前が変更された可能性があります。";
-        string msg_create_folder_already = "既に画像フォルダは作成済みです。";
-        string msg_create_folder_done = "画像フォルダを作成しました。";
-        string msg_image_notfound = "画像ファイルが存在しません。\n削除されたか、名前が変更された可能性があります。";
-        string msg_image_select = "画像を選択してください。";
-        string msg_folder_notfound = "画像フォルダを見つけられません。\n[フォルダを作成]ボタンを押してください。";
-        string msg_background_overwrite_img = "既に設定されている背景画像を上書きしますか？";
-        string msg_background_overwrite_ini = "設定ファイルを上書きしますか？";
-        string msg_background_done = "背景画像を適用しました。\nFirefoxを再起動してください。";
-        string msg_about_notworking = "1. Firefoxを開きます\n2. アドレスバーに 'about:config'と入力します。\n3. 検索ボックスに 'toolkit.legacyUserProfileCustomizations.stylesheets'と入力します。\n4. 'False'になっている場合、'True'にします。\n5. Firefoxを再起動します。";
-
+        string msg_about_profile;
+        string msg_profile_notfound;
+        string msg_create_folder_already;
+        string msg_create_folder_done;
+        string msg_image_notfound;
+        string msg_image_select;
+        string msg_folder_notfound;
+        string msg_background_overwrite_img;
+        string msg_background_overwrite_ini;
+        string msg_background_done;
+        string msg_about_notworking;
+        string msg_delcss_ques;
+        string msg_delcss_done;
 
         public Form1()
         {
@@ -59,6 +60,9 @@ namespace Firefox_NewTab_Background_Image_Changer
 
             comboBox2.SelectedIndex = 0;
             comboBox3.SelectedIndex = 0;
+
+            //apply language
+            comboBox3_SelectedIndexChanged(null, null);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -110,8 +114,24 @@ namespace Firefox_NewTab_Background_Image_Changer
 
         private void button3_Click(object sender, EventArgs e)
         {
-            double opac = 1;
             String encod = comboBox2.SelectedItem.ToString();
+
+            //not selected then, delete css
+            if (!checkBox1.Checked && !checkBox2.Checked && !checkBox3.Checked)
+            {
+                DialogResult res = MessageBox.Show(msg_delcss_ques, appname, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                {
+                    File.Delete(textBox1.Text + "\\chrome\\userContent.css");
+                    MessageBox.Show(msg_delcss_done, appname, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    return;
+                }
+
+            }
 
             //apply background image
             if (textBox2.Text != "")
@@ -138,7 +158,6 @@ namespace Firefox_NewTab_Background_Image_Changer
 
             string csstext = "";
             string target = "url(about:none)";
-            string imgpath = "";
 
             if (checkBox1.Checked)
             {
@@ -157,7 +176,7 @@ namespace Firefox_NewTab_Background_Image_Changer
 
             string imgname = System.IO.Path.GetExtension(textBox2.Text);
 
-            csstext = "@-moz-document " + target + " { body{ z-index: 0; overflow: hidden; background-color: rgb(0, 163, 175); } body::before{ content: ''; z-index: -1; position: fixed; top: 0; left: 0; background: #f9a no-repeat url(./img/bg" + imgname + ") center; opacity: " + opac + "; background-size: cover; width: 100vw; height: 100vh; } }";
+            csstext = "@-moz-document " + target + " { body{ content: ''; z-index: -1; position: fixed; top: 0; left: 0; background: #f9a no-repeat url(./img/bg" + imgname + ") center; background-size: cover; width: 100vw; height: 100vh;} }";
 
             if (File.Exists(textBox1.Text + "\\chrome\\img\\bg" + imgname))
             {
@@ -248,6 +267,8 @@ namespace Firefox_NewTab_Background_Image_Changer
                     msg_background_overwrite_ini = "設定ファイルを上書きしますか？";
                     msg_background_done = "背景画像を適用しました。\nFirefoxを再起動してください。";
                     msg_about_notworking = "1. Firefoxを開きます\n2. アドレスバーに 'about:config'と入力します。\n3. 検索ボックスに 'toolkit.legacyUserProfileCustomizations.stylesheets'と入力します。\n4. 'False'になっている場合、'True'にします。\n5. Firefoxを再起動します。";
+                    msg_delcss_ques = "userContent.cssを削除しますか？";
+                    msg_delcss_done = "削除しました。";
                     label1.Text = "プロファイル:";
                     label2.Text = "パス:";
                     label3.Text = "画像パス:";
@@ -283,6 +304,8 @@ namespace Firefox_NewTab_Background_Image_Changer
                     msg_background_overwrite_ini = "Overwrite INI?";
                     msg_background_done = "Successfull!\nRestart Firefox to apply.";
                     msg_about_notworking = "1. Start Firefox\n2. Type 'about:config' on address bar\n3. Type 'toolkit.legacyUserProfileCustomizations.stylesheets' on search box\n4. Change 'False' to 'True'\n5. Restart Firefox";
+                    msg_delcss_ques = "Delete userContent.css?";
+                    msg_delcss_done = "done.";
                     break;
             }
             return;
